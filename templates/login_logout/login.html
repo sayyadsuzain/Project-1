@@ -1,0 +1,10 @@
+{% extends 'base.html' %} <!-- Extending the base layout (must be the first tag) -->
+
+{% block content %}
+<h1>Login</h1> <!-- Page header -->
+<form method="post">
+    {% csrf_token %} <!-- CSRF token for security -->
+    {{ form.as_p }} <!-- Render form fields as paragraphs -->
+    <button type="submit">Login</button> <!-- Submit button -->
+</form>
+{% endblock %}

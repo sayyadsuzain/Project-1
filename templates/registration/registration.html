@@ -1,0 +1,28 @@
+{% extends 'base.html' %} <!-- Extends the base layout -->
+
+{% block content %}
+<h1>Register</h1>
+<!-- Registration Form -->
+<form method="post">
+    {% csrf_token %} <!-- CSRF token for form security -->
+    {{ form.as_p }} <!-- Renders the form fields as paragraphs -->
+    <button type="submit">Register</button> <!-- Submit button -->
+</form>
+
+<!-- Display form validation errors if any -->
+{% if form.errors %}
+    <div style="color: red;">
+        <p>Please correct the following errors:</p>
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li> <!-- Display errors for each field -->
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<!-- Redirect to login if already registered -->
+<p>Already have an account? <a href="{% url 'auth:login' %}">Login here</a>.</p>
+{% endblock %}

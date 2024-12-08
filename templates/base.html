@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %} <!-- Load static files -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Project{% endblock %}</title> <!-- Allow dynamic titles -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Static CSS -->
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- Navigation links -->
+            <a href="{% url 'registration:register' %}">Register</a> |
+            <a href="{% url 'auth:login' %}">Login</a> |
+            <a href="{% url 'auth:logout' %}">Logout</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <!-- Content will be inserted here by child templates -->
+        {% endblock %}
+    </main>
+</body>
+</html>
+
+
